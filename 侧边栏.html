@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <!-- html5 for ie -->
+    <link rel="stylesheet" type="text/css" href="https://www.jq22.com/jquery/animate-3.6.0.min.css">
+    <style>
+        body{font-family: Arial, Helvetica, sans-serif}
+        body,p,h1{margin: 0;}
+        ol,ul{list-style: none;margin: 0;padding: 0;}
+        a{text-decoration:none;}
+
+        #dom1{
+            position: fixed;
+            height: 100%;
+            width: 65px;
+            background-color: rgb(24, 99, 112);
+            transition: width cubic-bezier(.25,.1,.25,1) .25s;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        #dom1 .dom1span{
+            color: white;
+            display: block;
+            position: fixed;
+            top: 50%;
+            opacity: 1;
+            left: 0px;
+            transition: all ease 0.2s;
+            transform: rotate(90deg);
+            
+        }
+        #dom1 ul{
+            margin: 20px;
+            position: relative;
+            left: -120px;
+            transition: left cubic-bezier(0,1,1,1) 0.25s;
+        }
+        #dom1 ul li:first-child{
+            margin-bottom: 10px;
+        }
+        #dom1 ul li a{
+            color: white;
+            transition:padding ease 0.15s;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="dom1" @mouseenter="dom1enter" @mouseleave="dom1leave" >
+        <ul>
+            <li><b style="color:white">CURRT</b></li>
+            <li-a v-for="x in todos" :todo="x" ::key="x.id"></li-a>
+        </ul>
+        <span class="dom1span" >CURRT</span>
+    </div>
+    <script>
+        var todos=[
+            {id:1,msg:'nihao'},
+            {id:2,msg:'nihao'},
+            {id:3,msg:'nihao'},
+            {id:4,msg:'nihao'},
+            {id:5,msg:'nihao'},
+            {id:6,msg:'nihao'},
+            {id:7,msg:'nihao'},
+            {id:8,msg:'nihao'},
+            {id:9,msg:'nihao'},
+            {id:10,msg:'nihao'},
+            {id:11,msg:'nihao'},
+            {id:12,msg:'nihao'},
+            {id:13,msg:'nihao'},
+            {id:14,msg:'nihao'},
+            {id:15,msg:'nihao'},
+            {id:16,msg:'nihao'},
+            {id:17,msg:'nihao'},
+            {id:18,msg:'nihao'},
+            {id:19,msg:'nihao'},
+            {id:20,msg:'nihao'},
+            {id:21,msg:'nihao'},
+            {id:22,msg:'nihao'},
+            {id:23,msg:'nihao'},
+            {id:24,msg:'nihao'},
+            {id:1,msg:'nihao'},
+            {id:2,msg:'nihao'},
+            {id:3,msg:'nihao'},
+            {id:4,msg:'nihao'},
+            {id:5,msg:'nihao'},
+            {id:6,msg:'nihao'},
+            {id:7,msg:'nihao'},
+            {id:8,msg:'nihao'},
+            {id:9,msg:'nihao'},
+            {id:10,msg:'nihao'},
+            {id:11,msg:'nihao'},
+            {id:12,msg:'nihao'},
+            {id:13,msg:'nihao'},
+            {id:14,msg:'nihao'},
+            {id:15,msg:'nihao'},
+            {id:16,msg:'nihao'},
+            {id:17,msg:'nihao'},
+            {id:18,msg:'nihao'},
+            {id:19,msg:'nihao'},
+            {id:20,msg:'nihao'},
+            {id:21,msg:'nihao'},
+            {id:22,msg:'nihao'},
+            {id:23,msg:'nihao'},
+            {id:24,msg:'nihao'},{id:1,msg:'nihao'},
+            {id:2,msg:'nihao'},
+            {id:3,msg:'nihao'},
+            {id:4,msg:'nihao'},
+            {id:5,msg:'nihao'},
+            {id:6,msg:'nihao'},
+            {id:7,msg:'nihao'},
+            {id:8,msg:'nihao'},
+            {id:9,msg:'nihao'},
+            {id:10,msg:'nihao'},
+            {id:11,msg:'nihao'},
+            {id:12,msg:'nihao'},
+            {id:13,msg:'nihao'},
+            {id:14,msg:'nihao'},
+            {id:15,msg:'nihao'},
+            {id:16,msg:'nihao'},
+            {id:17,msg:'nihao'},
+            {id:18,msg:'nihao'},
+            {id:19,msg:'nihao'},
+            {id:20,msg:'nihao'},
+            {id:21,msg:'nihao'},
+            {id:22,msg:'nihao'},
+            {id:23,msg:'nihao'},
+            {id:24,msg:'nihao'},
+        ]
+    Vue.component("li-a",{
+        template:`<li @mouseover="liover" @mouseout="liout" :class="[a,c]"><a href="javascript:0"  >{{todo.msg}}</a></li>`,
+        props:['todo'],
+        data:function(){
+            return {
+                    a:'animated',
+                    c:'',
+            }
+        },
+        methods:{
+            liover:function(e){
+            if(e.target.nodeName.toLowerCase()==='a'){
+                e.target.style.paddingLeft="7px"
+                e.target.style.backgroundColor="black";
+
+            }
+            },
+            liout:function(e){
+                if(e.target.nodeName.toLowerCase()==='a'){
+                    e.target.style.paddingLeft="0px"
+                    e.target.style.backgroundColor="rgb(24, 99, 112)";
+
+            }
+            }
+        }
+        
+    })
+    new Vue({
+        el:"#dom1",
+        data:{
+            todos:todos,
+            // cup:{
+            //     'transition-property':"width",
+            //     'transition-duration':"0.25s",
+            //     'transition-timing-function':"cubic-bezier(.25,.1,.25,1)"
+            // },
+            // tran:{
+            //     transform: "rotate(90deg)"
+            // }
+        },
+        methods:{
+            dom1enter:function(e){
+                e = e || window.event;
+                e.target.removeEventListener('mouseleave',this.dom1leave,false)
+                e.target.lastChild.style.opacity="0";
+                e.target.style.width='300px';
+                e.target.firstChild.style.left="10px";
+                e.target.firstChild.style.transitionDelay="0.25s"
+                e.target.lastChild.style.left='40px';
+                }, 
+            dom1leave:function(e){
+                e = e || window.event;
+                e.target.removeEventListener('mouseenter',this.dom1enter,false)
+                e.target.style.overflowY="hidden"
+                e.target.style.width='65px';
+                e.target.firstChild.style.left="-120px";
+                e.target.firstChild.style.transitionDelay="0s"
+                e.target.lastChild.style.opacity="1";
+                e.target.lastChild.style.left='0';
+            }
+        }
+    })
+    </script>
+</body>
+</html>

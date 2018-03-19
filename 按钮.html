@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.3.1.js"></script>
+    <style>
+    .p1{
+        position: relative;
+        display: inline-block;
+        transition: all 0.1s;
+        -moz-transition: all 0.1s;
+        -webkit-transition: all 0.1s;
+        -o-transition: all 0.1s;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <div id="dom1">
+        <p class="p1">helloworld</p>
+        <p class="p1">helloworld</p>
+        <p class="p1">helloworld</p>
+    </div>
+    <script>
+        var times=null;
+        $('.p1').mouseover(function(){
+            var p;var bl=true;
+            times=setInterval(function(){
+                p=Math.round(Math.random()*20)
+                if(bl){
+                    $('.p1').css({"transform":'rotate('+p+'deg)','top':p/2})
+                    bl=!bl;
+                }else{
+                    $('.p1').css({"transform":'rotate('+-p+'deg)','bottom':p/2})
+                    bl=!bl;
+                }
+                
+            },100)
+        })
+        $('.p1'). mouseout(function(){
+            window.clearInterval(times);
+                    $('.p1').css({"transform":'rotate(0deg)','bottom':'0','top':'0'})  
+        })
+    </script>
+</body>
+</html>
