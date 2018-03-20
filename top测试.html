@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <!-- html5 for ie -->
+    <link rel="stylesheet" type="text/css" href="https://www.jq22.com/jquery/animate-3.6.0.min.css">
+    <style>
+        body{font-family: Arial, Helvetica, sans-serif}
+        body,p,h1{margin: 0;}
+        ol,ul{list-style: none;margin: 0;padding: 0;}
+        a{text-decoration:none;}
+
+        #dom{
+            height: 200px;
+            width: 100px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="dom">
+<p>你好你好你好</p>
+<p>你好你好你好</p>
+<br><br><br><br><br><br>
+<p>你好你好你好</p>
+<p>你好你好你好</p>
+<p>你好你好你好</p>
+<p>你好你好你好</p>
+<br><br><br><br><br><br>
+<p>你好你好你好</p>
+<p>你好你好你好</p>
+<p>你好你好你好</p>
+    </div>
+
+    <button id="int">222</button>
+    <script>
+        document.getElementById('int').addEventListener("click",function(){
+            document.getElementById('dom').scrollTop=300;
+        })
+    </script>
+</body>
+</html>
