@@ -73,10 +73,11 @@
             flex-grow: 1;
         }
 
-        /* #dom1 #ful{
+        #dom1 #ful{
             overflow: hidden;
             height: 100%;
-            width:100%; */
+            width: 100%;
+
         }
         .noselect{
             -webkit-user-select: none;
@@ -87,13 +88,13 @@
     </style>
 </head>
 <body>
-    <div id="dom1" @mouseenter="dom1enter" @mouseleave="dom1leave"  @wheel="dom1wheel">
-        <!-- <div id="ful"> -->
+    <div id="dom1" @mouseenter="dom1enter" @mouseleave="dom1leave"  @mousemove='dom1move'@wheel="dom1wheel">
+        <div id="ful">
           <ul>
             <li><b style="color:white">CURRT</b></li>
             <li-a v-for="x in todos" :todo="x" ::key="x.id"></li-a>
         </ul>  
-        <!-- </div> -->
+        </div>
         
        
         <div id="dom1s"><div id="dsup"></div>
@@ -101,8 +102,8 @@
                         <div id="dsdw"></div></div>
         <span class="dom1span" >CURRT</span>
     </div>
+    <div style="height:2000px;width:200px;background-color:black"></div>
     <script>
-        // var tme=false;
         var todos=[
             {id:1,msg:'nihao'},
             {id:2,msg:'nihao'},
@@ -204,9 +205,9 @@
         }
         }
     });
-    var v=0;
-    var do2 ='2';
-var x=new Vue({
+    var v=0,downY=0;
+    var tem=false;
+    new Vue({
         el:"#dom1",
         data:{
             todos:todos,
@@ -245,7 +246,7 @@ var x=new Vue({
                 }, 
             dom1leave:function(e){
                 e = e || window.event;
-                this.tem=false;
+                tem=false;
                 e.target.style.width='65px';
                 e.target.firstChild.firstChild.style.left="-120px";
                 e.target.firstChild.firstChild.style.transitionDelay="0s"
@@ -253,63 +254,63 @@ var x=new Vue({
                 e.target.lastChild.style.filter = 'alpha(opacity=100)';
                 e.target.lastChild.style.left='0';
             },
-            // dom1move:function(e){
-            //     if(this.tem){
-            //         this.scrollvue((e.clientY-this.downY)*this.div1Sh/this.winch);
-            //         this.downY=e.clientY;
-            //     }
-            // },
+            dom1move:function(e){
+                if(tem){
+                    this.scrollto((e.clientY-downY)*div1Sh/winch);
+                    downY=e.clientY;
+                }
+            },
             dom1wheel:function(e){
                 e = e || window.event;
-                if(e.wheelDelta){
-                    console.log(e.target.nodeName)
+                if(e.wheelDelta&&e.target.parentNode.nodeName.toLowerCase()==='ul'){
                     this.swheel(e.wheelDelta/6,e);
-                }else if(e.detail){
+                }else if(e.detail&&e.target.parentNode.nodeName.toLowerCase()==='ul'){
                     this.swheel(-e.detail*5,e);
                 }},
             destDown:function(e){
-                this.tem=true;
-                this.downY=e.clientY;
+                tem=true;
+                downY=e.clientY;
+                console.log(e.clientY)
                 if(navigator.userAgent.indexOf('MSIE')>0){
-                    this.dom11.onselectstart='return false;';
+                    y.onselectstart='return false;';
                 }else{
-                    this.dom11.classList.add('noselect');
+                    y.classList.add('noselect');
                 }
             },
             destUp:function(e){
-                this.tem=false;
+                tem=false;
                 if(navigator.userAgent.indexOf('MSIE')>0){
-                    this.dom11.onselectstart='';
+                    y.onselectstart='';
                 }else{
-                    this.dom11.classList.remove('noselect');
+                    y.classList.remove('noselect');
                 }
             },
             scrollto:function(rel,e){
                 v+=rel;
                 console.log(e)
                 if(v>0){
-                    e.target.style.top=0+'px';
+                    v=0;
+                    e.target.parentNode.style.top=0+'px';
                 }else if(v<-showon){
-                    e.target.style.top=-showon+'px';
+                    v=-showon;
+                    e.target.parentNode.style.top=-showon+'px';
                 }else{
-                    e.target.style.top=v+'px';
+                    e.target.parentNode.style.top=v+'px';
                 }
                 var domdsdwHeight=-v*showout/showon;
                 document.getElementById('dsup').style.height=domdsdwHeight+'px';
                 },
-            // scrollvue:function(rel){
-            //         this.scrollto(this.dom11.scrollTop+rel)
-            //     },
             swheel:function(rel,e){
-                   // this.scrollvue(rel);
                     this.scrollto(rel,e);
-                    e.preventDefault();
+                    var istop=e.target.parentNode.style.top==0||Math.ceil(e.target.parentNode.style.top)==-showon;
+                    var pistop=istop;
+                    if (!istop || (istop && !pistop)) {
+                            e.preventDefault();
+                        }
                 },
-            fu:function(){
-                alert(do2)
-            }
         }
     })
+var y=document.getElementById('ful');
 var yy=document.getElementById('dsct')
 var yyy=document.getElementById('ful').scrollHeight;//总高度
     var winch=window.clientHeight||document.documentElement.clientHeight;//可视高度
@@ -324,7 +325,7 @@ var yyy=document.getElementById('ful').scrollHeight;//总高度
     }
     var xxx=window ||document.documentElement
     xxx.addEventListener('resize',dv1fun)
-
+//每次调动视窗，就刷新dsct的高度
     </script>
 </body>
 </html>

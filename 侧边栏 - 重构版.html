@@ -103,7 +103,7 @@
 
     <div style="height:2000px;width:200px;background-color:black"></div>
     <script>
-        var tme=false;
+        var tem=false;
         var todos=[
             {id:1,msg:'nihao'},
             {id:2,msg:'nihao'},
@@ -291,7 +291,15 @@ document.getElementById('dom1').addEventListener("mousemove",function(e){
     }
 })
 
+// var int=5,intimer=0,intt=1;
+// var timer=setInterval(function(x){
+//     if(x>0&&dom11.scrollTop>=dom11.scrollTop+top){
 
+//         clearInterval(timer)
+//     }else if(x<0&&dom11.scrollTop<=dom11.scrollTop+top){
+//         clearInterval(timer)
+//     }
+// },100),
 
 function istop(){
 return dom11.scrollTop==0 || Math.ceil(dom11.scrollTop)==showon
@@ -315,9 +323,9 @@ function scrollvue(rel){
 function swheel(rel,e){
     var pistop=istop();
     scrollvue(rel);
-    //if (!istop() || (istop() && !pistop)) {
+    if (!istop() || (istop() && !pistop)) {
         e.preventDefault();
-    //}
+    }
 }
 
 

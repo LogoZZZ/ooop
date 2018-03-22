@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <script>
+        var fontfly=(function(fontname,fonturl1,fonturl2,fonturl3,fonturl4){
+            this.fontname=fontname;
+            this.fonturl1=fonturl1; this.fonturl2=fonturl2; this.fonturl3=fonturl3; this.fonturl1=fonturl4;
+            $("@font-face").css({'font-family':"'"+this.fontname+"';",'src':"url('"+this.fonturl1+"');",'src':"url('"+this.fonturl2+"');",'src':"url('"+this.fonturl3+"');",'src':"url('"+this.fonturl4+"');"})
+        })
+        var fft=new fontfly();
+        fft('sj','font/sj.ttf')
+    </script>
+</head>
+<body style="font-family: 'sj', Arial, sans-serif;font-weight: 800">
+<p>你好</p>
+</body>
+</html>
