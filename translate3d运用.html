@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+    <script src="http://www.jq22.com/jquery/html5.min.js"></script>
+    <!-- html5 for ie -->
+    <link rel="stylesheet" type="text/css" href="https://www.jq22.com/jquery/animate-3.6.0.min.css">
+    <style>
+        body{font-family: Arial, Helvetica, sans-serif}
+        body,p,h1{margin: 0;}
+        ol,ul{list-style: none;margin: 0;padding: 0;}
+        a{text-decoration:none;}
+        .dom2{
+            position: absolute;
+            transform:translate3d(0,0,0);
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            top: 200px;
+            transition: width ease 0.25s;
+        }
+        .dom2:hover{
+            width: 200px;
+        }
+        .dom3{
+            top:400px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="dom1" style="height:2000px;width:200px;background-color:black;">
+        <div class="dom2" name='tran'></div>
+        <div class="dom2 dom3" name='tran'></div>
+    </div>
+    <script>
+
+    var sbody;
+    var sclTop;
+    var sin=0;
+    var timer1=null;
+    var ss=0;
+    function sb(){
+        document.body.scrollTop==0?sclTop=document.documentElement:sclTop=document.body
+    }//获取scrolltop的确定dom  (兼容)
+
+        window.addEventListener('scroll',function(){
+       sb();
+       if(sclTop.scrollTop>sin){
+           ss+=sclTop.scrollTop-sin;
+           clearInterval(timer1)
+        i=0
+        //document.getElementById('dom2').style['transform']='translate3d(0,'+ss+'px'+',0)';
+        on(ss);
+            up()
+       }else if(sclTop.scrollTop<sin){
+        clearInterval(timer1)
+            ss+=sclTop.scrollTop-sin
+            i=0
+        //document.getElementById('dom2').style['transform']='translate3d(0,'+ss+'px'+',0)';
+        on(ss);
+            up()
+       }
+       sin=sclTop.scrollTop;
+    })
+
+    var i;
+    var ss_s;
+var dom2=document.getElementsByClassName('dom2');
+function up(){
+    timer1=setInterval(function(){
+    i+=5
+    ss=ss-ss/20;
+    // document.getElementById('dom2').style['transform']='translate3d(0,'+ss+'px'+',0)';
+    on(ss);
+    if(i==1000){
+        ss=0;
+        on(ss);
+        //document.getElementById('dom2').style['transform']='translate3d(0,'+ss+'px'+',0)';
+        clearInterval(timer1)
+    }
+},5)
+}
+
+function on(ss){
+    //this.ss=ss
+    var _i;
+    for(_i=0;_i<dom2.length;_i++){
+        dom2[_i].style['transform']='translate3d(0,'+ss+'px'+',0)';
+    }
+}
+    </script>
+</body>
+</html>

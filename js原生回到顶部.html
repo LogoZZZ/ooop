@@ -66,11 +66,14 @@ Bezier.prototype={
 
 
         var sclTop;
-        if(document.body.scrollTop==0){
+        window.addEventListener('scroll',function(){
+       if(document.body.scrollTop==0){
             sclTop=document.documentElement;
         }else{
             sclTop=document.body
         }
+    })
+        
         var stop=0;
         var sbody;
 
@@ -101,7 +104,7 @@ Bezier.prototype={
             sbody10=sbody/10;
             sbody19=sbody10*9;
             sbody13=sbody10*3;
-            bz=new Bezier(0,sbody,1.2,sbody19,0.3,sbody13,2,0);
+            bz=new Bezier(0,sbody,0.6,sbody19,0.2,sbody13,1,0);
             run();
         })
 
