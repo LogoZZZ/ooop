@@ -18,7 +18,7 @@
         a{text-decoration:none;}
         .dom2{
             position: absolute;
-            transform:translate3d(0,0,0);
+            /* transform:translate3d(0,0,0); */
             width: 100px;
             height: 100px;
             background-color: yellow;
@@ -93,6 +93,10 @@ function on(ss){
     var _i;
     for(_i=0;_i<dom2.length;_i++){
         dom2[_i].style['transform']='translate3d(0,'+ss+'px'+',0)';
+        dom2[_i].style['-ms-transform']='translate3d(0,'+ss+'px'+',0)';
+        dom2[_i].style['-moz-transform']='translate3d(0,'+ss+'px'+',0)';
+        dom2[_i].style['-webkit-transform']='translate3d(0,'+ss+'px'+',0)';
+        dom2[_i].style['-o-transform']='translate3d(0,'+ss+'px'+',0)';
     }
 }
     </script>
