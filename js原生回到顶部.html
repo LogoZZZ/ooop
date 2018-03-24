@@ -62,7 +62,8 @@ Bezier.prototype={
         return this.getY(this.getX(t));
     }
 }
-
+var bz;
+        bz=new Bezier(0,0,0.7,0.1,0.3,0.9,1,1);
 
 
         var sclTop;
@@ -78,33 +79,25 @@ Bezier.prototype={
         var sbody;
 
         var timer=null
-        var i=0;
+        var i=1000;
         var ii;
         var stop;
         function run(){
             timer=setInterval(function(){
-            i+=5;
-            ii=i/1000;
-            stop=bz.so(ii)
-            sclTop.scrollTop=stop;
-            if(sclTop.scrollTop==0){
+            // ii=i/1000;
+            i-=10;
+            // stop=bz.so(ii)
+            sclTop.scrollTop=sclTop.scrollTop-sclTop.scrollTop/20;
+            if(i==0){
                 clearInterval(timer);
-                sbody=0;
             }
-        })
+        },10)
         }
-        var bz;
-        var sbody10,sbody19,sbody13;
         var btn=document.getElementById('btn');
         btn.addEventListener('click',function(){
             clearInterval(timer);
-            stop=0;i=0;
             sbody=sclTop.scrollTop;
-            // sbody=sbodyxx;
-            sbody10=sbody/10;
-            sbody19=sbody10*9;
-            sbody13=sbody10*3;
-            bz=new Bezier(0,sbody,0.6,sbody19,0.2,sbody13,1,0);
+            i=1000;
             run();
         })
 

@@ -1,0 +1,2 @@
+设置元素class名为dom2：如：<div class="dom2"></div>
+并且设置为绝对定位position: absolute;

@@ -1,0 +1,2 @@
+设置一个元素id为btn
+如：<div id="btn"></div>  
