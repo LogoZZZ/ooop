@@ -63,7 +63,7 @@ Bezier.prototype={
     }
 }
 var bz;
-        bz=new Bezier(0,0,0.7,0.1,0.3,0.9,1,1);
+        bz=new Bezier(0,0,0.7,0.01,0.3,0.9,1,1);
 
 
         var sclTop;
@@ -84,11 +84,10 @@ var bz;
         var stop;
         function run(){
             timer=setInterval(function(){
-            // ii=i/1000;
+            ii=i/1000;
             i-=10;
-            // stop=bz.so(ii)
             sclTop.scrollTop=sclTop.scrollTop-sclTop.scrollTop/20;
-            if(i==0){
+            if(i<0 || sclTop.scrollTop==0){
                 clearInterval(timer);
             }
         },10)

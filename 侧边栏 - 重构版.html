@@ -338,6 +338,7 @@ if (navigator.userAgent.indexOf("Firefox") < 0) {
     });
 } else {
     dom11.addEventListener("DOMMouseScroll", function (e) {
+        console.log(e.detail)
         swheel(e.detail * 5, e);
     });
 }
